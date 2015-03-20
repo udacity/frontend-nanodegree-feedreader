@@ -2,7 +2,7 @@
 *:after,
 *:before: {
     box-sizing: inherit;
-}
+} 
 
 html {
     box-sizing: border-box;
@@ -12,7 +12,6 @@ body {
     color: #111;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    margin: 0;
 }
 
 a {
@@ -90,3 +89,5 @@ h2 {
     padding: 1em;
     margin: 0.5em 0;
 }
+
+
