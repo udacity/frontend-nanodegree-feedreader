@@ -43,15 +43,17 @@ $(function() {
     });
 
     describe('The menu', function() {
+        var fontsize=parseInt($('body').css('font-size'));
+        var translate=0-fontsize*12;
     	it('menu is hidden by default', function() {
-    		expect(parseInt($('.hidden').css('transform').split(',')[4])).toBe(-192);});
-        it('should click toggle', function(done) {
+    		expect(parseInt($('.hidden').css('transform').split(',')[4])).toBe(translate);});
+        it('should show/disappear when click toggle', function(done) {
             $(".menu-icon-link").click();
             setTimeout(function () {
                 expect(parseInt($(".hidden").css('transform').split(',')[4])).toBe(0);
                 $(".menu-icon-link").click();
                 setTimeout(function () {
-                    expect(parseInt($(".hidden").css('transform').split(',')[4])).toBe(-192);
+                    expect(parseInt($(".hidden").css('transform').split(',')[4])).toBe(translate);
                     done();
                 },1000);
 
@@ -120,7 +122,7 @@ $(function() {
                 var j=i;
             it('feed results should be different everytime it loads ', function(done) {
                 expect(results[j]).not.toEqual(results[j+1]);
-                console.log(j);
+
                 done();
             })})();
         }
