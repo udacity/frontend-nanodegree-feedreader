@@ -1,6 +1,6 @@
 *,
 *:after,
-*:before: {
+*:before {
     box-sizing: inherit;
 }
 

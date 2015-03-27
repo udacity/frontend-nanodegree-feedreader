@@ -24,21 +24,40 @@ $(function() {
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
+
         });
 
+        it('every allFeeds object has a non-empty url property.', function() {
+            for (var i = 0, len = allFeeds.length; i < len; i++) {
+                expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url).not.toBe('');
+            }
+        });
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
-
-
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+        it('every allFeeds object has a non-empty name property.', function() {
+            for (var i = 0, len = allFeeds.length; i < len; i++) {
+                expect(allFeeds[i].name).toBeDefined();
+                expect(allFeeds[i].name).not.toBe('');
+            }
+        });
     });
 
+    describe('The menu', function() {
+    	it('menu is hidden by default', function() {
+    		expect(parseInt($('.hidden').css('transform').split(',')[4])).toBe(-192);});
+        it('should click toggle', function(done) {
+            $(".menu-icon-link").click();
+            setTimeout(function () {
+                expect(parseInt($(".hidden").css('transform').split(',')[4])).toBe(0);
+                $(".menu-icon-link").click();
+                setTimeout(function () {
+                    expect(parseInt($(".hidden").css('transform').split(',')[4])).toBe(-192);
+                    done();
+                },1000);
+
+            },1000);
+
+    });});
 
     /* TODO: Write a new test suite named "The menu" */
 
@@ -53,6 +72,18 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+
+    describe('Initial Entries', function() {
+        beforeEach(function (done) {
+            loadFeed(0);
+            done();
+        });
+
+        it('should ', function() {
+           expect($(".feed").children().length).not.toBe(0);
+    	});
+
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
