@@ -98,33 +98,31 @@ $(function() {
 
     describe('New Feed Selection', function() {
         var results;
+        var fetchFeeds=function(j,done){
+            loadFeed(j, function () {
+                results.push($(".feed").html());
+                if (j === len - 1) {
+                    done();
+                }
+            });
+        };
         beforeEach(function (done) {
             results=[];
             results.push('');
             for (var i = 0, len = allFeeds.length; i < len; i++) {
-                (function(){
-                    var j=i;
-                    loadFeed(j, function () {
-                        results.push($(".feed").html());
-                        if (j === len - 1) {
-
-                            done()
-                        }
-                    });
-                })();
+               fetchFeeds(i,done);
             }
         });
 
+    var createSpecs=function(j){
+        it('feed results should be different everytime it loads ', function(done) {
+            expect(results[j]).not.toEqual(results[j+1]);
 
+            done();
+        });};
 
         for (var i = 0, len = allFeeds.length; i < len; i++) {
-            (function(){
-                var j=i;
-            it('feed results should be different everytime it loads ', function(done) {
-                expect(results[j]).not.toEqual(results[j+1]);
-
-                done();
-            })})();
+            createSpecs(i);
         }
     });
     
