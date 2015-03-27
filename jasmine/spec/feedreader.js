@@ -79,7 +79,7 @@ $(function() {
             done();
         });
 
-        it('should ', function() {
+        it('the content is not empty after intial load', function() {
            expect($(".feed").children().length).not.toBe(0);
     	});
 
@@ -94,8 +94,40 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+    describe('New Feed Selection', function() {
+        var results;
+        beforeEach(function (done) {
+            results=[];
+            results.push('');
+            for (var i = 0, len = allFeeds.length; i < len; i++) {
+                (function(){
+                    var j=i;
+                    loadFeed(j, function () {
+                        results.push($(".feed").html());
+                        if (j === len - 1) {
 
+                            done()
+                        }
+                    });
+                })();
+            }
+        });
+
+
+
+        for (var i = 0, len = allFeeds.length; i < len; i++) {
+            (function(){
+                var j=i;
+            it('feed results should be different everytime it loads ', function(done) {
+                expect(results[j]).not.toEqual(results[j+1]);
+                console.log(j);
+                done();
+            })})();
+        }
+    });
+    
+    /* TODO: Write a new test suite named "New Feed Selection"
+    
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
