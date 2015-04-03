@@ -19,7 +19,7 @@ Click "index.html" to open the test result page, there are four testing suite. T
 ##Test Suite 'Initial Entries'
 (1) a test that ensures when the loadFeed function is called and completes its work, there is at least a single .entry element within the .feed container.
 
-####Test Suite 'New Feed Selection'
+##Test Suite 'New Feed Selection'
 
 (1)write a test that ensures when a new feed is loaded by the loadFeed function that the content actually changes.
 
