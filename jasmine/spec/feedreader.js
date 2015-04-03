@@ -21,9 +21,31 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
+
+        beforeEach(function () {
+            jasmine.addMatchers({//here I customize a matcher to test if all the objects in one array contains certain non-empty attributes, this matcher will be used to test non-empty names
+                toHaveNonEmpty: function () {
+                    return {
+                        compare: function (actual, expected) {
+                            var result={};
+                            for (var i = 0, len = actual.length; i < len; i++) {
+                                if(typeof actual[i][expected]==="undefined"||actual[i][expected]===''){
+                                    result.pass=false;
+                                    result.message="there is empty properties";
+                                    return result;  }
+                      }
+                            result.pass=true;
+                            result.message="there is no empty properties";
+                            return result;
+                        }
+                    };
+                }
+            });
+        });
+
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            expect(allFeeds.length).toBeGreaterThan(0);//a more strict comparison
 
         });
 
@@ -33,16 +55,13 @@ $(function() {
         it('every allFeeds object has a non-empty url property.', function() {
             for (var i = 0, len = allFeeds.length; i < len; i++) {
                 expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds[i].url).not.toBe('');
+                expect(allFeeds[i].url).toMatch(/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/);//I add a regex to test thery are truly url links.
             }
         });
         /* The following test  loops through each feed in the allFeeds
          object and ensures it has a name defined and that the name is not empty.*/
         it('every allFeeds object has a non-empty name property.', function() {
-            for (var i = 0, len = allFeeds.length; i < len; i++) {
-                expect(allFeeds[i].name).toBeDefined();
-                expect(allFeeds[i].name).not.toBe('');
-            }
+            expect(allFeeds).toHaveNonEmpty('name');//the customized matcher
         });
     });
 
