@@ -29,14 +29,17 @@ $(function() {
                         compare: function (actual, expected) {
                             var result={};
                             for (var i = 0, len = actual.length; i < len; i++) {
-                                if(typeof actual[i][expected]==="undefined"||actual[i][expected]===''){
-                                    result.pass=false;
-                                    result.message="there is empty properties";
-                                    return result;  }
-                      }
-                            result.pass=true;
-                            result.message="there is no empty properties";
-                            return result;
+                                if(typeof actual[i][expected]==="string"||actual[i][expected].length>0){
+                            continue;
+                      }else{
+                              result.pass=false;
+                              result.message="there is  empty properties";
+                              return result;
+                                }
+                            }
+                          result.pass=true;
+                          result.message="there is no empty properties";
+                          return result;
                         }
                     };
                 }
@@ -98,43 +101,32 @@ $(function() {
         });
 
         it('the content is not empty after intial load', function() {
-           expect($(".feed").children().length).not.toBe(0);//make sure the feed has children nodes
+           expect($(".feed").children().length).toBeGreaterThan(0);//make sure the feed has children nodes
     	});
 
     });
 
+    function testResult (i) { //refactor the function because use asynchronous call in loop is dangerous:scope issues
+      it('feed results should be different everytime it loads ', function (done) {/*test if each result in the array is different than the next one.*/
+
+        loadFeed(i, function () {
+          var before = $(".feed").html();
+          loadFeed(i + 1, function () {
+            var after = $(".feed").html();
+            expect(before).not.toEqual(after);
+            done();
+          });
+        });
+      });
+    }
 
     /*test when a new feed is loaded
      * by the loadFeed function that the content actually changes.*/
     describe('New Feed Selection', function() {
-        var results;// the array saves the content of each feed
+        for (var i = 0, len = allFeeds.length-1; i < len; i++) {
 
-        var fetchFeeds=function(j,done){
-            loadFeed(j, function () {
-                results.push($(".feed").html());
-                if (j === len - 1) {//signal done when reach the last feed
-                    done();
-                }
-            });
-        };
-        beforeEach(function (done) {
-            results=[];
-            results.push('');//before initial loading, the first result is empty
-            for (var i = 0, len = allFeeds.length; i < len; i++) {//fetch the content of each feed and push to the results;
-               fetchFeeds(i,done);
-            }
-        });
-
-    var createSpecs=function(j){
-        it('feed results should be different everytime it loads ', function() {/*test if each result in the array is different than the next one. Technically,we should examine if every result is different than any of the remaining results, which is more complicated and not necessary.*/
-            expect(results[j]).not.toEqual(results[j+1]);
-
-        });};
-
-        for (var i = 0, len = allFeeds.length; i < len; i++) {
-            createSpecs(i);//loop through the results array to do the comparison
+          testResult(i);
+            //loop through the results array to do the comparison
         }
     });
-    
-
 }());
