@@ -95,9 +95,11 @@ $(function() {
 
     /*test the entries is not empty after the initial load*/
     describe('Initial Entries', function() {
+
+
         beforeEach(function (done) {//make the ajax call load the feed,
-            loadFeed(0);
-            done();
+            loadFeed(0,function(){
+              done();});
         });
 
         it('the content is not empty after intial load', function() {
@@ -106,11 +108,12 @@ $(function() {
 
     });
 
+
     function testResult (i) { //refactor the function because use asynchronous call in loop is dangerous:scope issues
       it('feed results should be different everytime it loads ', function (done) {/*test if each result in the array is different than the next one.*/
 
         loadFeed(i, function () {
-          var before = $(".feed").html();
+            var before=$(".feed").html();
           loadFeed(i + 1, function () {
             var after = $(".feed").html();
             expect(before).not.toEqual(after);
@@ -123,6 +126,7 @@ $(function() {
     /*test when a new feed is loaded
      * by the loadFeed function that the content actually changes.*/
     describe('New Feed Selection', function() {
+
         for (var i = 0, len = allFeeds.length-1; i < len; i++) {
 
           testResult(i);
