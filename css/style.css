@@ -49,7 +49,7 @@ h2 {
     color: #FFF;
 }
 
-.menu {
+.slide-menu {
     position: absolute;
     top: 3.5em;
     padding: 1em;
@@ -60,23 +60,23 @@ h2 {
     transition: transform 0.2s;
 }
 
-.menu ul {
+.slide-menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.menu li {
+.slide-menu li {
     padding: 0;
 }
 
-.menu li a {
+.slide-menu li a {
     color: #fff;
     display: block;
     padding: 0.5em 0;
 }
 
-.menu-hidden .menu {
+.menu-hidden .slide-menu {
     transform: translate3d(-12em, 0, 0);
     transition: transform 0.2s;
 }
