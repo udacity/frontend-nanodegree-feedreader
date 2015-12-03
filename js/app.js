@@ -10,7 +10,7 @@
 var allFeeds = [
     {
         name: 'Udacity Blog',
-        url: 'http://blog.udacity.com/feeds/posts/default?alt=rss'
+        url: 'http://blog.udacity.com/feed'
     }, {
         name: 'CSS Tricks',
         url: 'http://css-tricks.com/feed'
