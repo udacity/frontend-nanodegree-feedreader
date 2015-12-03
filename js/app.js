@@ -115,7 +115,7 @@ $(function() {
 
     /* When a link in our feedList is clicked on, we want to hide
      * the menu, load the feed, and prevent the default action
-     * (following the link) from occuring.
+     * (following the link) from occurring.
      */
     feedList.on('click', 'a', function() {
         var item = $(this);
