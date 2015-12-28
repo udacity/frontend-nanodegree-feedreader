@@ -93,9 +93,7 @@ $(function() {
         //before each test, run the loadFeed function, send in '0' to load the first the RSS feed. Then call the done()
         //function as a callback to allow the rest of the tests to run.
         beforeEach(function(done) {
-            loadFeed(0,function(){
-                done();
-            });
+            loadFeed(0, done);
         });
 
         it('should have at least one entry in the feed', function(done){
@@ -117,31 +115,17 @@ $(function() {
 
         beforeEach(function(done) {
             loadFeed(0,function(){
-                done();
+                //set the first value to the designated html
+                firstString = $('.feed').html();
+                loadFeed(1,done);
             });
         });
 
-        it('should load initial item', function(done){
-            //load the initial value from the first RSS feed, make sure it's defined
-            firstString = $('.feed > .entry-link')[0].computedName;
-            expect(firstString).toBeDefined();
+        it('should have different items', function(done){
+            //get the new value of the feed, and make sure it's not the same as the first.
+            secondString = $('.feed').html();
+            expect(firstString).not.toBe(secondString);
             done();
-        });
-
-        describe('and should change when a new link is loaded', function(done) {
-            //before the next function, load a new RSS feed.
-            beforeEach(function(done) {
-                loadFeed(1,function(){
-                    done();
-                });
-            });
-
-            it('and the items should be different', function(done){
-                //get the new value of the first link, and make sure it's not the same as the first.
-                secondString = $('.feed > .entry-link')[0].computedName;
-                expect(firstString).not.toBe(secondString);
-                done();
-            });
         });
     });
 }());
