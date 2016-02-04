@@ -1,3 +1,14 @@
+Frontend Nanodegree: FeedReader
+To run this project, you can click here:
+1. Download or fork the application from: https://github.com/meckmeier/frontend-nanodegree-feedreader
+2. Select index.html to start the app
+
+To use the application
+1. Use the hamburger menu at the top of the page to select the Feed Reader stream you want.
+2. Click the individual headline you would like to read in the main page to launch a new article.
+
+You can view the project tests, by scrolling down to the bottom of the page.
+
 This project has a Jasmine test process that will check for:
 * RSS Feeds are defined, have associated urls, and have names.
 * The menu is initially hidden, visibility changes when clicked.
