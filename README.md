@@ -1,3 +1,15 @@
+This project has a Jasmine test process that will check for:
+* RSS Feeds are defined, have associated urls, and have names.
+* The menu is initially hidden, visibility changes when clicked.
+* Initial Entries return at least one row.
+* New Feed Selection changes after load.
+
+Current baseline project requirements are that all tests passed. I set up the app such that I
+could see failures on each test to verify its functionality, but reset them to pass states for
+submission.
+
+References: i did leverage conversations in the Udacity forums to help me resolve this project.
+
 # Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
