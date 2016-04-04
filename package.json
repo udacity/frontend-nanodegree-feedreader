@@ -1,0 +1,34 @@
+{
+  "name": "p5",
+  "version": "1.0.0",
+  "description": "Udacity Project 5a",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-cssmin": "^1.0.0",
+    "grunt-contrib-htmlmin": "^1.0.0",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-ftpush": "^0.3.3",
+    "grunt-pagespeed": "^2.0.0",
+    "imagemin-mozjpeg": "^5.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jscott10/fend-p5-nmp.git"
+  },
+  "author": "James L Scott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jscott10/fend-p5-nmp/issues"
+  },
+  "homepage": "https://github.com/jscott10/fend-p5-nmp#readme"
+}
