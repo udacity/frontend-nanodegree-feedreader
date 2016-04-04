@@ -12,7 +12,7 @@ grunt.initConfig({
 			tasks: ['htmlmin']
 		},
 		uglify: {
-			files: ['src/js/*.js'],
+			files: ['src/js/*.js','src/jasmine/spec/*.js'],
 			tasks: ['uglify']
 		},
 		css: {
