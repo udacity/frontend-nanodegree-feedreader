@@ -1,8 +1,8 @@
 {
-  "name": "p5",
+  "name": "frontend-nanodegree-feedreader",
   "version": "1.0.0",
-  "description": "Udacity Project 5a",
-  "main": "index.js",
+  "description": "Udacity Project 7",
+  "main": "index.html",
   "dependencies": {
     "grunt": "^0.4.5"
   },
@@ -11,11 +11,8 @@
     "grunt-contrib-cssmin": "^1.0.0",
     "grunt-contrib-htmlmin": "^1.0.0",
     "grunt-contrib-imagemin": "^1.0.0",
-    "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-ftpush": "^0.3.3",
-    "grunt-pagespeed": "^2.0.0",
     "imagemin-mozjpeg": "^5.1.0"
   },
   "scripts": {
@@ -23,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jscott10/fend-p5-nmp.git"
+    "url": "git+https://github.com/jscott10/frontend-nanodegree-feedreader"
   },
   "author": "James L Scott",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jscott10/fend-p5-nmp/issues"
+    "url": "https://jscott10.github.io/frontend-nanodegree-feedreader/dist/"
   },
-  "homepage": "https://github.com/jscott10/fend-p5-nmp#readme"
+  "homepage": "https://jscott10.github.io/frontend-nanodegree-feedreader/dist/"
 }
