@@ -1,4 +1,4 @@
-# Udacity FEND Project 7 - Neighborhood Map Project
+# Udacity FEND Project 7 - Application Testing with Jasmine - Feed Reader
 
 ## Overview
 
