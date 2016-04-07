@@ -30,8 +30,12 @@ dist\
     fonts\
     js\
 
-Jasmine library files:
+Jasmine:
 jasmine\
+	Jasmine distribution:
+	lib\
+	Spec file:
+	src\feedreader.js
 ```
 
 All code and images are minified and served from the `dist\` folder.
@@ -42,9 +46,8 @@ Grunt is used to automate the build process. To configure the Grunt environment 
 grunt-contrib-watch
 grunt-contrib-imagemin
 grunt-contrib-uglify
-grunt-contrib-sass
+grunt-contrib-cssmin
 grunt-contrib-htmlmin
-grunt-pagespeed
 ```
 
-Running the grunt-contrib-watch process will run imagemin, uglify, sass or htmlmin when a file is change.
+Running the grunt-contrib-watch process will run imagemin, uglify, cssmin or htmlmin when a file is change.
