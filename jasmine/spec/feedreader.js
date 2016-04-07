@@ -38,6 +38,7 @@ $(function() {
 		 */
 
 		it('all contain URLs', function() {
+			// From http://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
 			var url_regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 			allFeeds.forEach(function(item, index) {
 				expect(item.url).toBeDefined();
