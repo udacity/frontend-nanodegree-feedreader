@@ -31,13 +31,25 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-
+        it('all urls are defind', function() {
+            allFeeds.forEach(function(feed,i) {
+                expect(feed.url).toBeDefined();
+                expect(feed.url).not.toBe('');
+            });
+        });
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-    });
+         it('all names are defind', function() {
+             allFeeds.forEach(function(feed,i) {
+                 expect(feed.name).toBeDefined();
+                 expect(feed.name).not.toBe('');
+             });
+        });
+     });
+});
 
 
     /* TODO: Write a new test suite named "The menu" */
@@ -69,4 +81,4 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-}());
+// }());
