@@ -129,5 +129,33 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    /* Additional testing - a test suite for user-added feeds */
+    
+    describe('New Feed Selection', function() {
+        /**
+            Test that the content in fact changes when a new feed is loaded
+            by the loadFeed function.
+        */
+        var feedLen = allFeeds.length;
+        var $headerTitle = $('.header-title');
+        var initialTitle, newTitle;
+        beforeEach(function(done) {
+            if (feedLen < 2) throw 'Not enough feeds to compare';
 
-});
+            loadFeed(0, function() {
+                initialTitle = $headerTitle.html();
+                loadFeed(feedLen - 1, function() {
+                    newTitle = $headerTitle.html();
+                    done();
+                });
+            });
+        });
+
+        it('loads new entries', function(done) {
+            expect(newTitle).not.toBe(initialTitle);
+            // reload default feed
+            loadFeed(0, done);
+        });
+    });
+
+}());
