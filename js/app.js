@@ -40,7 +40,7 @@ function init() {
  * This function all supports a callback as the second parameter
  * which will be called after everything has run successfully.
  */
- function loadFeed(id, cb) {
+ function loadFeed(id , cb) {
      var feedUrl = allFeeds[id].url,
          feedName = allFeeds[id].name;
 
@@ -52,21 +52,22 @@ function init() {
        success: function (result, status){
 
                  var container = $('.feed'),
-                     title = $('.header-title'),
-                     entries = result.feed.entries,
-                     entriesLen = entries.length,
-                     entryTemplate = Handlebars.compile($('.tpl-entry').html());
+                    title = $('.header-title'),
+                    entries = result.feed.entries,
+                    entriesLen = entries.length,
+                    entryTemplate = Handlebars.compile($('.tpl-entry').html());
 
-                 title.html(feedName);   // Set the header text
-                 container.empty();      // Empty out all previous entries
+                title.html(feedName);   // Set the header text
+                container.empty();      // Empty out all previous entries
 
-                 /* Loop through the entries we just loaded via the Google
-                  * Feed Reader API. We'll then parse that entry against the
-                  * entryTemplate (created above using Handlebars) and append
-                  * the resulting HTML to the list of entries on the page.
-                  */
+                  // Loop through the entries we just loaded via the Google
+                  // * Feed Reader API. We'll then parse that entry against the
+                  // * entryTemplate (created above using Handlebars) and append
+                  // * the resulting HTML to the list of entries on the page.
+                  
                  entries.forEach(function(entry) {
                      container.append(entryTemplate(entry));
+                     console.log(container)
                  });
 
                  if (cb) {
