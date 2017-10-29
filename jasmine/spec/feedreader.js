@@ -44,6 +44,7 @@ $(function() {
       expect(allFeeds).toBeDefined();
       expect(allFeeds.length).not.toBe(0);
 
+        
     });
   });
 
@@ -59,9 +60,21 @@ $(function() {
     it('the menu is hidden ', function() {
         expect($("body").hasClass('menu-hidden')).toBe(true);
 
+        
     });
+  });
 
-    /* TODO: Write a test that ensures the menu changes
+
+  /* TODO: Write a new test suite named "The menu" */
+  describe('The Menu', function() {
+    /* TODO: Write a test that ensures the menu element is
+     * hidden by default. You'll have to analyze the HTML and
+     * the CSS to determine how we're performing the
+     * hiding/showing of the menu element.
+     */
+
+
+      /* TODO: Write a test that ensures the menu changes
      * visibility when the menu icon is clicked. This test
      * should have two expectations: does the menu display when
      * clicked and does it hide when clicked again.
@@ -72,6 +85,24 @@ $(function() {
         expect($('body').hasClass('menu-hidden')).toBe(false);
         expect($('.menu-icon-link')).click();
         expect($('body').hasClass('menu-hidden')).toBe(true);
+
+        
+        it('the menu is hidden ', function() {
+        expect($("body").hasClass('menu-hidden')).toBe(true);
+        // expect('body').not.toBe('menu-icon-link');
+
+    });
+
+    /* TODO: Write a test that ensures the menu changes
+     * visibility when the menu icon is clicked. This test
+     * should have two expectations: does the menu display when
+     * clicked and does it hide when clicked again.
+     */
+    it('menu display', function() {
+      expect($('body').toggleClass('menu-icon-link'));
+      expect($('body').hasClass('menu-hidden')).toBe(false);
+      expect($('body').toggleClass('menu-icon-link'));
+      expect($('body').hasClass('menu-hidden')).toBe(true);
     });
   });
 
@@ -86,15 +117,25 @@ $(function() {
 
      var feedId;
      beforeEach(function(done) {
-            loadFeed(0, function() {
+
+         loadFeed(0, function() {
               done();
             });
         });
 
     it(".entry element within the .feed container", function(done) {
+            loadFeed(function() {
+            feedId = 0;
+            done();
+            }, 0);
+        });
+
+    it("should support async", function(done) {
+        feedId++;
         expect(feedId).toBeGreaterThan(0);
         done();
   });
+
 
     /* TODO: Write a new test suite named "New Feed Selection" */
   });
@@ -116,6 +157,19 @@ $(function() {
     it("feed content changes", function(done) {
       // test: compare feed1 and feed two here
       // use done here 
+    });
+
+  });
+});
+
+    
+    it("takes a long time", function(done) {
+        loadFeed(function() {
+        done();
+      }, 9000);
+    });
+        allFeeds.afterEach(function() {
+      jasmine.DEFAULT_TIMEOUT_INTERVAL = loadFeed;
     });
 
   });
