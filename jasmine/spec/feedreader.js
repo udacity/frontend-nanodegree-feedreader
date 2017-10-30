@@ -32,8 +32,9 @@ $(function() {
          */
 
         it('has a URL defined', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            allFeeds.forEach(function(feed) {
+            expect(feed.url).toBeDefined();
+            expect(feed.url.length).not.toBe(0);
         });
 
         /* TODO: Write a test that loops through each feed
@@ -41,12 +42,13 @@ $(function() {
          * and that the name is not empty.*/
 
         it('has a name defined', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            allFeeds.forEach(function(feed) {
+            expect(feed.name).toBeDefined();
+            expect(feed.name.length).not.toBe(0);
 
         });
     });
-
+        });
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The Menu', function() {
@@ -87,10 +89,8 @@ $(function() {
 
         var feedId;
         beforeEach(function(done) {
-            setTimeout(function() {
                 feedId = 0;
                 done();
-            }, 1);
         });
 
         it('to compare', function(done) {
@@ -127,4 +127,6 @@ $(function() {
         });
 
     });
+});
+
 });
