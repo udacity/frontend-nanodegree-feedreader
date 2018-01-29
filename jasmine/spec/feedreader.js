@@ -88,9 +88,6 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(3, done);
         });
-        afterEach(function() {
-            loadFeed(0);
-        });
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -107,9 +104,24 @@ $(function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
 
     describe('New Feed Selection', function() {
+        var index2Feeds, index0Feeds;
+
+        beforeEach(function(done) {
+            loadFeed(2, function() {
+                index2Feeds = $('.feed').html();
+                loadFeed(0, function() {
+                    index0Feeds = $('.feed').html();
+                    done()
+                });
+            });
+        });
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        it('is loaded the content change', function(done) {
+            expect(index2Feeds).not.toBe(index0Feeds);
+            done();
+        });
     });
 }());
