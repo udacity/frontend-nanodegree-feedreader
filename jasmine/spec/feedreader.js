@@ -84,7 +84,7 @@ $(function() {
     });
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
-        var feedContainer = $('.feed');
+        let feedContainer = $('.feed');
         beforeEach(function(done) {
             loadFeed(3, done);
         });
@@ -104,7 +104,7 @@ $(function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
 
     describe('New Feed Selection', function() {
-        var index2Feeds, index0Feeds;
+        let index2Feeds, index0Feeds;
 
         beforeEach(function(done) {
             loadFeed(2, function() {
