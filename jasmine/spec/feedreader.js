@@ -59,8 +59,18 @@ $(function() {
       * the CSS to determine how we're performing the
       * hiding/showing of the menu element.
       */
+    var defaultMenuItem, firstTimeMenuItemClicked, secondTimeMenuItemClicked;
+    beforeEach(function() {
+      defaultMenuItem = $('body').hasClass('menu-hidden');
+      $('.menu-icon-link').click();
+      firstTimeMenuItemClicked = $('body').hasClass('menu-hidden');
+      $('.menu-icon-link').click();
+      secondTimeMenuItemClicked = $('body').hasClass('menu-hidden');
+
+    });
+
     it('is hidden by default', function() {
-      expect($('body').hasClass('menu-hidden')).toBe(true);
+      expect(defaultMenuItem).toBe(true);
     });
 
     /* TODO: Write a test that ensures the menu changes
@@ -69,13 +79,8 @@ $(function() {
       * clicked and does it hide when clicked again.
       */
     it('changes visibility when clicked', function() {
-      // var clicked = false;
-
-      // $('.menu-icon-link').on('click', function() {
-      //   clicked = true;    
-      // });
-
-      // expect($('body').hasClass('menu-hidden')).not.toBe(clicked);
+      expect(firstTimeMenuItemClicked).toBe(false);
+      expect(secondTimeMenuItemClicked).toBe(true);
     });
   });
 
@@ -87,13 +92,42 @@ $(function() {
       * Remember, loadFeed() is asynchronous so this test will require
       * the use of Jasmine's beforeEach and asynchronous done() function.
       */
+    beforeEach(function(done) {
+      loadFeed(allFeeds[0].id, function() {
+        done();
+      });
+    });
+
+    it('should have at least one entry', function(done) {
+      expect($('.entry').children()).not.toBe({});
+      done();
+    });
      
   });
 
   /* TODO: Write a new test suite named "New Feed Selection" */
-
+  describe('New Feed Selection', function() {
     /* TODO: Write a test that ensures when a new feed is loaded
       * by the loadFeed function that the content actually changes.
       * Remember, loadFeed() is asynchronous.
       */
+    var initialContent = [], nextContent = [];
+    
+    beforeEach(function(done) {
+      $('.entry').each(function() {
+        initialContent.push($(this).text().trim());
+      });
+      loadFeed(1, function() {
+        done();
+      });
+    });
+
+    it('should have changed content when new feed is loaded', function(done) {  
+      $('.entry').each(function() {
+        nextContent.push($(this).text().trim());
+      });
+      expect(JSON.stringify(initialContent)).not.toBe(JSON.stringify(nextContent));
+      done();
+    });
+  });
 }());
