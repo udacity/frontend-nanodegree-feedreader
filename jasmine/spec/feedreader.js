@@ -61,9 +61,14 @@ $(function() {
       */
     var defaultMenuItem, firstTimeMenuItemClicked, secondTimeMenuItemClicked;
     beforeEach(function() {
+      // Capture Default Menu Item when the page loads
       defaultMenuItem = $('body').hasClass('menu-hidden');
+
+      // Click on Menu Button and capture the Menu item Class
       $('.menu-icon-link').click();
       firstTimeMenuItemClicked = $('body').hasClass('menu-hidden');
+
+      // Click on Menu Item again and again capture the Menu Item Class
       $('.menu-icon-link').click();
       secondTimeMenuItemClicked = $('body').hasClass('menu-hidden');
 
@@ -93,6 +98,7 @@ $(function() {
       * the use of Jasmine's beforeEach and asynchronous done() function.
       */
     beforeEach(function(done) {
+      // Load the Page with first allFeed item
       loadFeed(allFeeds[0].id, function() {
         done();
       });
@@ -114,9 +120,12 @@ $(function() {
     var initialContent = [], nextContent = [];
     
     beforeEach(function(done) {
+      // Capture the initial content on the page when it loads with first item in allFeeds
       $('.entry').each(function() {
         initialContent.push($(this).text().trim());
       });
+
+      // Call the API to load the page with second item in allFeeds
       loadFeed(1, function() {
         done();
       });
