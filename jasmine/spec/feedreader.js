@@ -64,9 +64,9 @@ $(function() {
          */
         it('visibility of menu changes when the menu icon is clicked', function() {
             var menuIcon = document.querySelector('.menu-icon-link');
-            menuIcon.click();
+            menuIcon.click(); //when the menu is clicked
             expect(document.body.classList.contains('menu-hidden')).toBe(false);
-            menuIcon.click();
+            menuIcon.click(); //the menu is clicked back
             expect(document.body.classList.contains('menu-hidden')).toBe(true);
         });
         /* TODO: Write a test that ensures the menu changes
@@ -98,8 +98,8 @@ $(function() {
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        var oldf,
-            newf;
+        var oldf, //to store old feed
+            newf; //to store new feed
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
@@ -107,7 +107,7 @@ $(function() {
          */
         beforeEach(function(done) {
             loadFeed(0, function() {
-                oldf = document.querySelector(".feed").innerHTML;
+                oldf = document.querySelector(".feed").innerHTML; //get old feed
 
                 loadFeed(1, function() {
                     done();
@@ -115,8 +115,8 @@ $(function() {
             });
         });
         it('content changes when a new feed is loaded', function(done) {
-            newf = document.querySelector(".feed").innerHTML;
-            expect(oldf === newf).toBe(false);
+            newf = document.querySelector(".feed").innerHTML; //get new feed
+            expect(oldf === newf).toBe(false); //comparison of feeds
             done();
 
         });
