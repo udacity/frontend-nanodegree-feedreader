@@ -65,7 +65,7 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "The menu" */
-    describe('Menu element validations - ', () => {
+    describe('The menu', () => {
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -103,6 +103,10 @@ $(function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
+    let feed0EntryLink = null;
+
+    describe('Initial Entries', () => {
+
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -110,11 +114,50 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+        // Invoke the loadFeed(0) to load the Udacity Blog feed and wait for
+        // it to complete. 
+        let feed = null;
+        beforeEach(function(done) {
+            loadFeed(0, () => {
+                done();
+            });
+        });
+
+        // When the feed has been loaded check to make sure it has at least
+        // one .entry element.
+        it('should have at least one .entry element', (done) => {
+            feed0EntryLink = document.querySelectorAll('.feed .entry-link');
+            feed = document.querySelector('.feed');
+            const noEntries = feed.getElementsByClassName('entry').length;
+            expect(noEntries).toBeGreaterThan(0);
+            done();
+        });
+    });
+
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', () => {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+        // Invoke the loadFeed(1) to load the Udacity Blog feed and wait for
+        // it to complete. 
+        beforeEach(function(done) {
+            loadFeed(1, () => {
+                done();
+            });
+        });
+
+        // When the feed has been loaded check to make sure it has at least
+        // one .entry element.
+        it('should have at least one .entry element', (done) => {
+            const feed1EntryLink = document.querySelectorAll('.feed .entry-link');
+            expect(feed0EntryLink).not.toBe(feed1EntryLink);
+            done();
+        });
+    });
+
 }());
 
