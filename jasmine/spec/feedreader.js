@@ -31,13 +31,12 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-        describe('validate url key/values in allFeeds', () => {
+        describe('validate allFeeds url key/value pairs -', () => {
            allFeeds.forEach((feed,feedIndex) => {
-                console.log(feed);
-                it(`allFeeds element #${feedIndex} should have a 'url' attribute`, () => {
+                it(`element #${feedIndex} should have a 'url' attribute`, () => {
                     expect(feed.url).toBeDefined();
                 });
-                it(`allFeeds element #${feedIndex} should have a nonblank 'url' attribute`, () => {
+                it(`element #${feedIndex} should have a nonblank 'url' attribute`, () => {
                     expect(feed.url).not.toBe('');
                 });
             });
@@ -47,6 +46,17 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        describe('validate allFeeds name key/value pairs - ', () => {
+            allFeeds.forEach((feed,feedIndex) => {
+                 it(`element #${feedIndex} should have a 'name' attribute`, () => {
+                     expect(feed.name).toBeDefined();
+                 });
+                 it(`element #${feedIndex} should have a nonblank 'name' attribute`, () => {
+                     expect(feed.name).not.toBe('');
+                 });
+             });
+         });
+
     });
 
 
