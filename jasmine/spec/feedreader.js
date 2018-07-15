@@ -31,7 +31,17 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-
+        describe('validate url key/values in allFeeds', () => {
+           allFeeds.forEach((feed,feedIndex) => {
+                console.log(feed);
+                it(`allFeeds element #${feedIndex} should have a 'url' attribute`, () => {
+                    expect(feed.url).toBeDefined();
+                });
+                it(`allFeeds element #${feedIndex} should have a nonblank 'url' attribute`, () => {
+                    expect(feed.url).not.toBe('');
+                });
+            });
+        });
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -70,3 +80,4 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 }());
+
