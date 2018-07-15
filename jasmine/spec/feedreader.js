@@ -32,7 +32,9 @@ $(function() {
          * and that the URL is not empty.
          */
         describe('validate allFeeds url key/value pairs -', () => {
-           allFeeds.forEach((feed,feedIndex) => {
+            // Loop over each entry in the allFeeds array of objects and
+            // and examine the 'url' key/value pair
+            allFeeds.forEach((feed,feedIndex) => {
                 it(`element #${feedIndex} should have a 'url' attribute`, () => {
                     expect(feed.url).toBeDefined();
                 });
@@ -47,6 +49,8 @@ $(function() {
          * and that the name is not empty.
          */
         describe('validate allFeeds name key/value pairs - ', () => {
+            // Loop over each entry in the allFeeds array of objects and
+            // and examine the 'name' key/value pair
             allFeeds.forEach((feed,feedIndex) => {
                  it(`element #${feedIndex} should have a 'name' attribute`, () => {
                      expect(feed.name).toBeDefined();
@@ -61,18 +65,41 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "The menu" */
+    describe('Menu element validations - ', () => {
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+        it('menu is hidden by default', () => {
+            bodyClassValue = document.getElementsByTagName('body')[0]
+                .getAttribute('class');
+            expect(bodyClassValue).toBe('menu-hidden');
+        });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+        it('menu visibility toggles when clicked', () => {
+            // Click when the menu is hidden. After the click the menu should
+            // be visible to the user.
+            $( ".menu-icon-link" ).trigger( "click" );
+            bodyClassValue = document.getElementsByTagName('body')[0]
+                .getAttribute('class');
+            expect(bodyClassValue).not.toBe('menu-hidden');
+
+            // Click when the menu is visible. After the click the menu should
+            // be hidden from the user
+            $( ".menu-icon-link" ).trigger( "click" );
+            bodyClassValue = document.getElementsByTagName('body')[0]
+                .getAttribute('class');
+            expect(bodyClassValue).toBe('menu-hidden');
+        });
+
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
