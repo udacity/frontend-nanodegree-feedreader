@@ -110,9 +110,6 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
-
-    let feed0EntryLink = null;
-
     describe('Initial Entries', () => {
 
         /* TODO: Write a test that ensures when the loadFeed
@@ -134,7 +131,6 @@ $(function() {
         // When the feed has been loaded check to make sure it has at least
         // one .entry element.
         it('should have at least one .entry element', (done) => {
-            feed0EntryLink = document.querySelectorAll('.feed .entry-link');
             feed = document.querySelector('.feed');
             const noEntries = feed.getElementsByClassName('entry').length;
             expect(noEntries).toBeGreaterThan(0);
@@ -149,11 +145,17 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        let feed0EntryLink = null;
+        let feed1EntryLink = null;
 
         // Invoke the loadFeed(1) to load the CSS Tricks feed and wait for
         // it to complete. 
         beforeEach(function(done) {
+            loadFeed(0, () => {
+                feed0EntryLink = document.querySelectorAll('.feed .entry-link');
+            });
             loadFeed(1, () => {
+                feed1EntryLink = document.querySelectorAll('.feed .entry-link');
                 done();
             });
         });
@@ -161,7 +163,8 @@ $(function() {
         // When the feed has been loaded check to make sure its contents are
         // different from that of the previous feed.
         it('should populate the feed with a different set of contents', (done) => {
-            const feed1EntryLink = document.querySelectorAll('.feed .entry-link');
+            expect(feed0EntryLink).not.toBe(null);
+            expect(feed1EntryLink).not.toBe(null);
             expect(feed0EntryLink).not.toBe(feed1EntryLink);
             done();
         });
