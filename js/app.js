@@ -20,19 +20,6 @@ var allFeeds = [
     }, {
         name: 'Linear Digressions',
         url: 'http://feeds.feedburner.com/udacity-linear-digressions'
-    },
-    // TODO: Invalid entries for testing. Remove prior to promoting to
-    // production
-    {
-        name: 'No url',
-    }, {
-        name: 'Blank url',
-        url: ''
-    }, {
-        url: 'No name'
-    }, {
-        name: '',
-        url: 'Blank name'
     }
 ];
 

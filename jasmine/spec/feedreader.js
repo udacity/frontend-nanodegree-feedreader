@@ -31,6 +31,14 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+        allFeeds.forEach((feed,feedIndex) => {
+            it(`element #${feedIndex} should have a 'url' attribute`, () => {
+                expect(feed.url).toBeDefined();
+            });
+            it(`element #${feedIndex} should have a nonblank 'url' attribute`, () => {
+                expect(feed.url).not.toBe('');
+            });
+        });
         describe('validate allFeeds url key/value pairs -', () => {
             // Loop over each entry in the allFeeds array of objects and
             // and examine the 'url' key/value pair
@@ -142,7 +150,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 
-        // Invoke the loadFeed(1) to load the Udacity Blog feed and wait for
+        // Invoke the loadFeed(1) to load the CSS Tricks feed and wait for
         // it to complete. 
         beforeEach(function(done) {
             loadFeed(1, () => {
@@ -150,9 +158,9 @@ $(function() {
             });
         });
 
-        // When the feed has been loaded check to make sure it has at least
-        // one .entry element.
-        it('should have at least one .entry element', (done) => {
+        // When the feed has been loaded check to make sure its contents are
+        // different from that of the previous feed.
+        it('should populate the feed with a different set of contents', (done) => {
             const feed1EntryLink = document.querySelectorAll('.feed .entry-link');
             expect(feed0EntryLink).not.toBe(feed1EntryLink);
             done();
