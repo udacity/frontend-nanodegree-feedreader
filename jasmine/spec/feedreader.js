@@ -165,7 +165,7 @@ $(function() {
         it('should populate the feed with a different set of contents', (done) => {
             expect(feed0EntryLink).not.toBe(null);
             expect(feed1EntryLink).not.toBe(null);
-            expect(feed0EntryLink).not.toBe(feed1EntryLink);
+            expect(feed0EntryLink[0].innerHTML).not.toBe(feed1EntryLink[0].innerHTML);
             done();
         });
     });
