@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var eslint = require('gulp-eslint');
-var jasmine = require('gulp-jasmine-phantom');
+var jasmineBrowser = require('gulp-jasmine-browser');
 var concat = require('gulp-concat');
 
 gulp.task('default', ['copy-html', 'styles', 'lint', 'scripts'], function() {
@@ -41,21 +41,21 @@ gulp.task('scripts-dist', function() {
 });
 
 gulp.task('copy-html', function() {
-  // Copy index.html to the dist directory
+	// Copy index.html to the dist directory
 	gulp.src('./index.html')
 		.pipe(gulp.dest('./dist'));
 });
 
 gulp.task('styles', function() {
-  gulp.src('css/**/*.css')
-    // Update CSS prefixes to support the most recent two versions of
-    // each browser
+	gulp.src('css/**/*.css')
+		// Update CSS prefixes to support the most recent two versions of
+		// each browser
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions']
-    }))
-    // Output the CSS to the dist/css directory
-    .pipe(gulp.dest('dist/css'))
-    // Synchronize the browser with the latest set of changes
+		}))
+		// Output the CSS to the dist/css directory
+		.pipe(gulp.dest('dist/css'))
+		// Synchronize the browser with the latest set of changes
 		.pipe(browserSync.stream());
 });
 
@@ -72,12 +72,8 @@ gulp.task('lint', function () {
 		.pipe(eslint.failOnError());
 });
 
-gulp.task('tests', function () {
-	gulp.src('./jasmine/spec/feedreader.js')
-		.pipe(jasmine({
-      verbose: true,
-      keepRunner: './',
-			integration: true,
-			vendor: 'js/**/*.js'
-		}));
+gulp.task('tests', function() {
+	return gulp.src('jasmine/spec/feedreader.js')
+		.pipe(jasmineBrowser.specRunner({console: true}))
+		.pipe(jasmineBrowser.headless({driver: 'chrome'}));
 });
