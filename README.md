@@ -57,6 +57,8 @@ below.
 |:-:|:--------|:---------|
 | 1 | `cd <parent-destination-directory>` | Navigate to the directory that will contain the application's sub-directory. |
 | 2 | `git clone https://github.com/jdmedlock/frontend-nanodegree-feedreader.git` | This creates the application sub-directory and populates it with the source code and documentation for the current release maintained on GitHub. |
+| 3 | `gulp` | Use this command will build the development version of the app. This also watches for any subsequent changes in the app source files and automatically rebuilds the app. |
+| 4 | `gulp dist` | Use this command when you are ready to build the production version of the app |
 
 At this point the app will be located at the directory
 `<parent-destination-directory>/frontend-nanodegree-feedreader` on your

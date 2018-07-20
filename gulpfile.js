@@ -4,12 +4,12 @@ var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var eslint = require('gulp-eslint');
-var jasmineBrowser = require('gulp-jasmine-browser');
 var concat = require('gulp-concat');
 
-gulp.task('default', ['copy-html', 'styles', 'lint', 'scripts'], function() {
-	gulp.watch('sass/**/*.scss', ['styles']);
-	gulp.watch('js/**/*.js', ['lint']);
+// Prepare the app for Development testing
+gulp.task('default', ['copy-html', 'styles', 'lint', 'scripts'], function () {
+	gulp.watch('css/*.css', ['styles']);
+	gulp.watch('js/*.js', ['lint']);
 	gulp.watch('/index.html', ['copy-html']);
 	gulp.watch('./dist/index.html').on('change', browserSync.reload);
 
@@ -26,27 +26,28 @@ gulp.task('dist', [
 	'scripts-dist'
 ]);
 
-// Prepare Javascript source for development testing
-gulp.task('scripts', function() {
+// Combine all app scripts into a single file and copy to the distribution
+// directory
+gulp.task('scripts', function () {
 	gulp.src('js/**/*.js')
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('dist/js'));
 });
 
 // Prepare Javascript source for release to production
-gulp.task('scripts-dist', function() {
+gulp.task('scripts-dist', function () {
 	gulp.src('js/**/*.js')
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('copy-html', function() {
+gulp.task('copy-html', function () {
 	// Copy index.html to the dist directory
 	gulp.src('./index.html')
 		.pipe(gulp.dest('./dist'));
 });
 
-gulp.task('styles', function() {
+gulp.task('styles', function () {
 	gulp.src('css/**/*.css')
 		// Update CSS prefixes to support the most recent two versions of
 		// each browser
@@ -70,10 +71,4 @@ gulp.task('lint', function () {
 		// To have the process exit with an error code (1) on
 		// lint error, return the stream and pipe to failOnError last.
 		.pipe(eslint.failOnError());
-});
-
-gulp.task('tests', function() {
-	return gulp.src('jasmine/spec/feedreader.js')
-		.pipe(jasmineBrowser.specRunner({console: true}))
-		.pipe(jasmineBrowser.headless({driver: 'chrome'}));
 });
