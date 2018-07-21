@@ -2,20 +2,15 @@
 
 var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
-var browserSync = require('browser-sync').create();
 var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
 
 // Prepare the app for Development testing
 gulp.task('default', ['copy-html', 'styles', 'lint', 'scripts'], function () {
-	gulp.watch('css/*.css', ['styles']);
-	gulp.watch('js/*.js', ['lint']);
-	gulp.watch('/index.html', ['copy-html']);
-	gulp.watch('./dist/index.html').on('change', browserSync.reload);
-
-	browserSync.init({
-		server: './dist'
-	});
+	gulp.watch('./css/*.css', ['styles']);
+	gulp.watch('./js/*.js', ['lint']);
+	gulp.watch('./index.html', ['copy-html']);
+	gulp.watch('./dist/index.html');
 });
 
 // Prepare the app for Production Release
@@ -29,16 +24,16 @@ gulp.task('dist', [
 // Combine all app scripts into a single file and copy to the distribution
 // directory
 gulp.task('scripts', function () {
-	gulp.src('js/**/*.js')
+	gulp.src('/js/*.js')
 		.pipe(concat('all.js'))
-		.pipe(gulp.dest('dist/js'));
+		.pipe(gulp.dest('/dist/js'));
 });
 
 // Prepare Javascript source for release to production
 gulp.task('scripts-dist', function () {
-	gulp.src('js/**/*.js')
+	gulp.src('/js/*.js')
 		.pipe(concat('all.js'))
-		.pipe(gulp.dest('dist/js'));
+		.pipe(gulp.dest('/dist/js'));
 });
 
 gulp.task('copy-html', function () {
@@ -48,20 +43,18 @@ gulp.task('copy-html', function () {
 });
 
 gulp.task('styles', function () {
-	gulp.src('css/**/*.css')
+	gulp.src('/css/*.css')
 		// Update CSS prefixes to support the most recent two versions of
 		// each browser
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions']
 		}))
 		// Output the CSS to the dist/css directory
-		.pipe(gulp.dest('dist/css'))
-		// Synchronize the browser with the latest set of changes
-		.pipe(browserSync.stream());
+		.pipe(gulp.dest('/dist/css'));
 });
 
 gulp.task('lint', function () {
-	return gulp.src(['js/**/*.js'])
+	return gulp.src(['/js/*.js'])
 		// eslint() attaches the lint output to the eslint property
 		// of the file object so it can be used by other modules.
 		.pipe(eslint())

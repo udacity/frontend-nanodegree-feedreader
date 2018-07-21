@@ -25,7 +25,8 @@
     "browser-sync": "^2.24.5",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-eslint": "^5.0.0"
+    "gulp-eslint": "^5.0.0",
+    "gulp-jasmine-browser": "^4.0.0"
   },
   "dependencies": {
     "gulp": "^3.9.1"
