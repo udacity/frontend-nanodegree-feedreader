@@ -99,10 +99,10 @@ $(function() {
             let feed = document.querySelector('.feed');
 
             loadFeed(1, function() {
-                firstFeed = feed.html();
+                firstFeed = feed.innerHTML();
         //Set second reference point for test: nested callback function to check second feed element's HTML
                 loadFeed(0, function() {
-                    secondFeed = feed.html();
+                    secondFeed = feed.innerHTML();
                     done();
                 });
             });
@@ -112,5 +112,5 @@ $(function() {
             expect(firstFeed).not.toBe(secondFeed);
          });
     });
-         
+
 }());
