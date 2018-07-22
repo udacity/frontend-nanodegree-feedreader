@@ -96,7 +96,7 @@ $(function() {
 
         /*Set initial reference point for test: initial feed load against checking of feed element's HTML*/
          beforeEach(function(done) {
-            let feed = document.querySelector('.feed');
+            let feed = document.querySelectorAll('.feed');
 
             loadFeed(1, function() {
                 firstFeed = feed.innerHTML;
