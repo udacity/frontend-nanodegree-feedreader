@@ -127,7 +127,7 @@ $(function() {
         let feed = document.querySelector('.feed');
 
         loadFeed(1, function() {
-            firstFeed = feed.innerHTML();
+            firstFeed = feed.html();
         })
 
 
