@@ -87,7 +87,6 @@ $(function() {
     // 'New Feed Selection' test suite
 
     describe('New Feed Selection', function() {
-        let feed = document.querySelector('.feed');
         let firstFeed, secondFeed;
 
         /*test call on loadFeed() function, grabbing each feed element's HTML to later check equality on both, assuring that whenever a new feed object is called, content changes*/
@@ -98,7 +97,7 @@ $(function() {
 
         /*Set initial reference point for test: initial feed load against checking of feed element's HTML*/
          beforeEach(function(done) {
-
+            let feed = document.querySelector('.feed');
             loadFeed(1, function() {
                 firstFeed = feed.innerHTML;
         //Set second reference point for test: nested callback function to check second feed element's HTML
