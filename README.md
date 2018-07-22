@@ -26,8 +26,10 @@ Tests should be independent of one another.
 
 #### Run the Feed Reader Testing App
 ***
-To run the app please follow this link >> [https://negmah.github.io/frontend-nanodegree-feedreader/](https://negmah.github.io/frontend-nanodegree-feedreader/)
+To run the app online please follow this link >> [https://negmah.github.io/frontend-nanodegree-feedreader/](https://negmah.github.io/frontend-nanodegree-feedreader/)
 
-![N|Solid](http://res.cloudinary.com/negmah/image/upload/v1528493255/mem-game-thumb.png)
+To run the app locally - clone this project using $ git clone https://github.com/Negmah/frontend-nanodegree-feedreader.git and open the index.html file in your browser.
+
+![N|Solid](http://res.cloudinary.com/negmah/image/upload/v1532268958/Screenshot_1.png)
 
 ***
