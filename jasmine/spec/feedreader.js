@@ -79,7 +79,7 @@ $(function() {
          });
 
          it('are not empty', function() {
-            let entries = document.querySelectorAll('.feed, .entry');
+            let entries = document.querySelector('.feed, .entry');
             expect(entries.length).toBeGreaterThan(0);
          });
     });
