@@ -128,6 +128,11 @@ $(function() {
 
         loadFeed(1, function() {
             firstFeed = feed.html();
+
+            loadFeed(0, function() {
+                secondFeed = feed.html();
+                done();
+            })
         })
 
 
