@@ -80,7 +80,7 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          it('toggles open/close on menu when clicking on menu icon', function() {
+          it('icon toggles open/close when clicked', function() {
             /*Set reference point for test: initial click against checking of menu's class*/
             const menuIconLink = document.querySelector('.menu-icon-link');
 
@@ -108,8 +108,8 @@ $(function() {
             });
          });
 
-         it('feed !== 0'), function() {
-            let entries = $('.feed .entry');
+         it('are not empty'), function() {
+            const entries = document.querySelector('.feed .entry');
             expect(entries.length).toBeGreaterThan(0);
          }
     });
@@ -124,7 +124,7 @@ $(function() {
 
      /*Set reference point for test: initial feed load against checking of element's HTML, using jQuery to assure element is ready in the DOM*/
      beforeEach(function(done) {
-        let feed = document.getElementsByClass('feed');
+        let feed = document.querySelector('.feed');
 
         loadFeed(1, function() {
             firstFeed = feed.innerHTML();
