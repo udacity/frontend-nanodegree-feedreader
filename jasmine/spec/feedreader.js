@@ -106,10 +106,11 @@ $(function() {
                     done();
                 });
          });
-    });
+
          //Check equality on first and second feed element's HTML; expect it to be different
          it('loads and returns different entries', function() {
             expect(firstFeed).not.toBe(secondFeed);
          });
+    });
     });
 }());
