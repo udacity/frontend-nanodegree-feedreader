@@ -59,8 +59,10 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        it('slide menu starts open', function() {
-            const body = document.querySelector('body');
+
+        const body = document.querySelector('body');
+
+        it('starts open', function() {
             expect(body.classList).toContain('menu-hidden');
         });
 
@@ -69,6 +71,15 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+        it('icon toggles menu display', function() {
+            const menu =  document.querySelector('.menu-icon-link');
+            
+            menu.click();
+            expect(body.classList).not.toContain('menu-hidden');
+
+            menu.click();
+            expect(body.classList).toContain('menu-hidden');
+        });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
