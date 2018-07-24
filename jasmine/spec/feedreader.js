@@ -74,7 +74,7 @@ $(function () {
         it('icon toggles menu display', () => {
             // Start with menu closed
             expect(body.classList).toContain('menu-hidden');
-            
+
             const menu = document.querySelector('.menu-icon-link');
             menu.click();
             expect(body.classList).not.toContain('menu-hidden');
@@ -93,7 +93,7 @@ $(function () {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-        beforeEach( (done) => {
+        beforeEach((done) => {
             loadFeed(0, () => {
                 done()
             });
@@ -117,42 +117,27 @@ $(function () {
          * Remember, loadFeed() is asynchronous.
          */
 
-        const container = $('.feed');
-        let feed, event;
-        
-        const checkLinks = (evt) => {
-            evt.preventDefault();
-            event = evt;
-        }
+        let feedList, feed, title;
 
-        beforeEach((done) => {
-            
-            // Capture clicking of a link
-            $(document).on('click', 'a', checkLinks);
-            
+        beforeEach( (done) => {
+            // Initialize first feed to load
+            feedList = $('.feed-list').children();
+            expect(feedList.length).toBeGreaterThan(2);
+
             loadFeed(0, () => {
-                
-                // trigger click on feed
-                feed = $('.feed a')[0];
-                feed.click();
-                
+                title = $('.header-title').text();
                 done();
             });
         });
 
-        afterEach( (done) => {
-            $(document).off('click', 'a', checkLinks);
-            done();
-        });
-
         it('is loaded', (done) => {
-
-            // ensure that window location will change
-            expect(event.target.href).not.toBe('http://127.0.0.1:5500/index.html#');
-            
-            // Page content shouldn't include menu link
-            expect(document.body.classList).not.toContain('menu-icon-link');
-            done();
+            // Load the new feed
+            loadFeed(1, () => {
+                expect($('.header-title')).not.toBeNull();
+                expect($('.header-title').text()).not.toBe(title);
+                expect($('.header-title').text()).not.toBe('');
+                done();
+            });
         });
     });
 }());
