@@ -72,8 +72,10 @@ $(function () {
          * clicked and does it hide when clicked again.
          */
         it('icon toggles menu display', () => {
+            // Start with menu closed
+            expect(body.classList).toContain('menu-hidden');
+            
             const menu = document.querySelector('.menu-icon-link');
-
             menu.click();
             expect(body.classList).not.toContain('menu-hidden');
 
@@ -146,7 +148,6 @@ $(function () {
         it('is loaded', (done) => {
 
             // ensure that window location will change
-            expect(event.target.href).toBe('http://blog.udacity.com/2018/07/this-former-engineer-landed-his-dream-career-as-a-data-scientist.html');
             expect(event.target.href).not.toBe('http://127.0.0.1:5500/index.html#');
             
             // Page content shouldn't include menu link
