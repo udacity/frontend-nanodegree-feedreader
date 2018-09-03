@@ -1,0 +1,27 @@
+{
+  "name": "frontend-nanodegree-feedreader",
+  "version": "1.0.0",
+  "description": "Jasmine Testing project UDacity FED Nanodegree",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josep1992/frontend-nanodegree-feedreader.git"
+  },
+  "keywords": [
+    "Jasmine"
+  ],
+  "author": "Josep Lopez Hernandez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Josep1992/frontend-nanodegree-feedreader/issues"
+  },
+  "homepage": "https://github.com/Josep1992/frontend-nanodegree-feedreader#readme",
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1"
+  }
+}
