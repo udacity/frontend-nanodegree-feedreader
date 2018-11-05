@@ -1,9 +1,8 @@
 /* app.js
  *
- * This is our RSS feed reader application. It uses the Google
- * Feed Reader API to grab RSS feeds as JSON object we can make
- * use of. It also uses the Handlebars templating library and
- * jQuery.
+ * This is our RSS feed reader application. It uses a Udacity API to grab RSS
+ * feeds as JSON objects we can make use of. It also uses the Handlebars
+ * templating library and jQuery.
  */
 
 // The names and URLs to all of the feeds we'd like available.
@@ -23,13 +22,11 @@ var allFeeds = [
     }
 ];
 
-/* This function performs everything necessary to load a
- * feed using the Google Feed Reader API. It will then
- * perform all of the DOM operations required to display
- * feed entries on the page. Feeds are referenced by their
- * index position within the allFeeds array.
- * This function all supports a callback as the second parameter
- * which will be called after everything has run successfully.
+/* This function performs everything necessary to load a feed using a Udacity
+ * API. It will then perform all of the DOM operations required to display feed
+ * entries on the page. Feeds are referenced by their index position within the
+ * allFeeds array. This function all supports a callback as the second
+ * parameter which will be called after everything has run successfully.
  */
  function loadFeed(id, cb) {
      var feedUrl = allFeeds[id].url,
@@ -51,10 +48,10 @@ var allFeeds = [
                  title.html(feedName);   // Set the header text
                  container.empty();      // Empty out all previous entries
 
-                 /* Loop through the entries we just loaded via the Google
-                  * Feed Reader API. We'll then parse that entry against the
-                  * entryTemplate (created above using Handlebars) and append
-                  * the resulting HTML to the list of entries on the page.
+                 /* Loop through the entries we just loaded via the Udacity
+                  * API. We'll then parse that entry against the entryTemplate
+                  * (created above using Handlebars) and append the resulting
+                  * HTML to the list of entries on the page.
                   */
                  entries.forEach(function(entry) {
                      container.append(entryTemplate(entry));
