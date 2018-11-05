@@ -114,5 +114,6 @@ $(function() {
         $('body').toggleClass('menu-hidden');
     });
 
+    // Load the first feed
     loadFeed(0);
 }());
