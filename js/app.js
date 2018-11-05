@@ -23,15 +23,6 @@ var allFeeds = [
     }
 ];
 
-/* This function starts up our application. The Google Feed
- * Reader API is loaded asynchonously and will then call this
- * function when the API is loaded.
- */
-function init() {
-    // Load the first feed we've defined (index of 0).
-    loadFeed(0);
-}
-
 /* This function performs everything necessary to load a
  * feed using the Google Feed Reader API. It will then
  * perform all of the DOM operations required to display
@@ -83,14 +74,9 @@ function init() {
      });
  }
 
-/* Google API: Loads the Feed Reader API and defines what function
- * to call when the Feed Reader API is done loading.
- */
-google.setOnLoadCallback(init);
-
-/* All of this functionality is heavily reliant upon the DOM, so we
- * place our code in the $() function to ensure it doesn't execute
- * until the DOM is ready.
+/* Start up the application. All of this functionality is heavily reliant upon
+ * the DOM, so we place our code in the $() function to ensure it doesn't
+ * execute until the DOM is ready.
  */
 $(function() {
     var container = $('.feed'),
@@ -130,4 +116,6 @@ $(function() {
     menuIcon.on('click', function() {
         $('body').toggleClass('menu-hidden');
     });
+
+    loadFeed(0);
 }());
