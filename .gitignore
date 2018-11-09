@@ -1,5 +1,12 @@
 # packages
 node_modules
+package.json
+package-lock.json
+yarn.lock
+
+# eslint
+.eslintrc.yml
+.eslintignore
 
 # error log
 *.log
