@@ -1,0 +1,8 @@
+# packages
+node_modules
+
+# error log
+*.log
+
+# IDE
+.vscode
