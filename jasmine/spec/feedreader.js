@@ -63,7 +63,7 @@ $(function() {
     });
 
     /* The test suite for initial entries. */
-    describe('Initial entries', () => {
+    describe('Initial Entries', () => {
         /* This test ensures when the loadFeed function is called
          * and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -89,9 +89,29 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-
-        /* TODO: Write a test that ensures when a new feed is loaded
+    describe('New Feed Selection', () => {
+        /* This test ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
          */
+        let firstFeed;
+
+        /* Load feeds before all tests. */
+        beforeEach(done => {
+            loadFeed(0, () =>{
+                firstFeed = $('.entry').html();
+                done();
+            });
+        });
+
+        /* Change feeds. */
+        beforeEach(done => {
+            loadFeed(1, () =>{
+                done();
+            });
+        });
+
+        it('causes the content to change', () => {
+            expect($('.entry').html()).not.toBe(firstFeed);
+        });
+    });
 }());
