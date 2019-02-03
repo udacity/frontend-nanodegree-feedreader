@@ -111,3 +111,6 @@ $(function() {
         });
     });    
 }());
+
+
+// References include:https://matthewcranford.com/category/blog-posts/walkthrough/feed-reader/,  FEND Project 4 Feed Reader Testing - Walk Through with Ryan Waite at https://www.youtube.com/watch?v=eUdkhVkpCf8
