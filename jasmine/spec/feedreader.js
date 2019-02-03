@@ -50,7 +50,7 @@ $(function() {
 
     describe('The menu', function(){
 
-        
+     //Utilized concepts from Matthew Cranford's Feedreader Walkthrough   
         it('is hidden by default', function(){
             const bodyClass = document.querySelector('body');
 
@@ -80,7 +80,8 @@ $(function() {
 
         });
 
-    
+        //Utilized concepts from Ryan Waite's "Feedreader Testing Walkthrough"
+
         it('when loadFeed is called and completes work', function(){
             const feedClass = document.querySelector('.feed');
             expect(feedClass.children.length).toBeGreaterThan(0);
