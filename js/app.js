@@ -86,6 +86,7 @@ function init() {
 /* Google API: Loads the Feed Reader API and defines what function
  * to call when the Feed Reader API is done loading.
  */
+google.charts.load();
 google.setOnLoadCallback(init);
 
 /* All of this functionality is heavily reliant upon the DOM, so we
